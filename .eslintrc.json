@@ -1,6 +1,10 @@
 {
+<<<<<<< HEAD
   "extends": "next/core-web-vitals",
   "rules":{
     "no-unused-vars": "error"
   }
+=======
+  "extends": "next/core-web-vitals"
+>>>>>>> parent of 6421b81 (test)
 }
