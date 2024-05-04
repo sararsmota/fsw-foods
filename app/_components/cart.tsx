@@ -7,7 +7,7 @@ import { Separator } from "./ui/separator";
 import { Button } from "./ui/button";
 
 const Cart = () => {
-  const { products, subTotalPrice, totalPrice, totalDiscount } =
+  const { products, subtotalPrice, totalPrice, totalDiscounts } =
     useContext(CartContext);
   return (
     <div className="flex h-full flex-col py-5">
@@ -25,14 +25,14 @@ const Cart = () => {
               <CardContent className="space-y-2 p-5">
                 <div className="flex items-center justify-between text-xs">
                   <span className="text-muted-foreground">SubTotal</span>
-                  <span>{formatCurrency(subTotalPrice)}</span>
+                  <span>{formatCurrency(subtotalPrice)}</span>
                 </div>
 
                 <Separator />
 
                 <div className="flex items-center justify-between text-xs">
                   <span className="text-muted-foreground">Descontos</span>
-                  <span>- {formatCurrency(totalDiscount)}</span>
+                  <span>- {formatCurrency(totalDiscounts)}</span>
                 </div>
 
                 <Separator className="h-[0.5px]" />
