@@ -35,6 +35,7 @@ const Cart = () => {
 
     try {
       setIsSubmitLoading(true);
+
       await createOrder({
         subtotalPrice,
         totalDiscounts,
@@ -47,6 +48,14 @@ const Cart = () => {
         status: OrderStatus.CONFIRMED,
         user: {
           connect: { id: data.user.id },
+        },
+        products: {
+          createMany: {
+            data: products.map((product) => ({
+              productId: product.id,
+              quantity: product.quantity,
+            })),
+          },
         },
       });
       clearCart();
@@ -129,13 +138,14 @@ const Cart = () => {
             <AlertDialogTitle>Deseja finalizar seu pedido?</AlertDialogTitle>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel disabled={isConfirmDialogOpen}>
+            <AlertDialogCancel>Cancelar</AlertDialogCancel>
+            <AlertDialogAction
+              onClick={handleFinishOrderClick}
+              disabled={isSubmitLoading}
+            >
               {isSubmitLoading && (
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
               )}
-              Cancelar
-            </AlertDialogCancel>
-            <AlertDialogAction onClick={handleFinishOrderClick}>
               Finalizar
             </AlertDialogAction>
           </AlertDialogFooter>
