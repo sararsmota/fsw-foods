@@ -76,8 +76,8 @@ model UserFavoriteRestaurant {
   userId       String
   user         User       @relation(fields: [userId], references: [id])
   restaurantId String
+  restaurant   Restaurant @relation(fields: [restaurantId], references: [id])
   createdAt    DateTime   @default(now())
-  Restaurant   Restaurant @relation(fields: [restaurantId], references: [id])
 
   @@id([userId, restaurantId])
 }
