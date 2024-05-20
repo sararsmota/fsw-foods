@@ -12,7 +12,6 @@ import { toast } from "sonner";
 import { useSession } from "next-auth/react";
 
 interface RestaurantItemProps {
-  userId?: string;
   restaurant: Restaurant;
   className?: string;
   userFavoriteRestaurants: UserFavoriteRestaurant[];
